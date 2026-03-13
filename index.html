@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Broken Page</title>
-		<link rel="stylesheet" href="styles.css">
-		<script src="script.js"></script>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="script.js" defer></script>
 	</head>
-	<body>
-		<header>
-			<a href="/" class="logo-wrapper">
-				<picture>
-					<img
-						src="assets/logo.svg"
-						alt="A Totally Real Company"
-						class="logo"
-						loading="eager"
-						width="203"
-						height="64"
-					/>
-				</picture>
-			</a>
-			<button id="menu-btn" class="menu-btn">Menu</button>
+	<body id="top">
+		<a class="skip-link" href="#main-content">Skip to main content</a>
 
-			<nav id="menu" class="navigation" style="display: none;">
+		<header class="site-header">
+			<a href="/" class="logo-wrapper" aria-label="A Totally Real Company home">
+				<img
+					src="assets/logo.svg"
+					alt="A Totally Real Company"
+					class="logo"
+					width="203"
+					height="64"
+				/>
+			</a>
+
+			<button
+				id="menu-btn"
+				class="menu-btn"
+				type="button"
+				aria-expanded="false"
+				aria-controls="menu"
+				aria-label="Toggle navigation"
+			>
+				☰
+			</button>
+
+			<nav id="menu" class="navigation" aria-label="Main navigation" hidden>
 				<ul class="navigation-list">
 					<li><a href="#">Home</a></li>
 					<li><a href="#">About</a></li>
@@ -35,46 +47,88 @@
 			</nav>
 		</header>
 
-		<main>
+		<main id="main-content">
 			<section class="content">
-				<div class="width-container">
+				<div class="width-container content-grid">
 					<div class="column column-1">
 						<p class="section-subtitle">Example Subtitle</p>
-						<h2 class="section-title">Content & Image</h2>
-						<p class="content-container">Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+						<h1 class="section-title">Content &amp; Image</h1>
+						<p class="content-container">
+							Donec sed odio dui. Donec ullamcorper nulla non metus auctor
+							fringilla. Maecenas sed diam eget risus varius blandit sit amet non
+							magna. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae
+							elit libero, a pharetra augue. Morbi leo risus, porta ac
+							consectetur ac, vestibulum at eros.
+						</p>
 						<div class="btn-wrapper">
 							<a href="#" class="btn">Example CTA</a>
 						</div>
 					</div>
 
 					<div class="column column-2">
-						<img src="assets/image@2x.jpg">
+						<img
+							src="assets/image@2x.jpg"
+							alt="Decorative content preview"
+							class="feature-image"
+							width="640"
+							height="420"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 				</div>
 			</section>
 
-			<section>
+			<section class="form-section">
 				<div class="width-container">
 					<div class="header-wrapper">
 						<p class="section-subtitle">Example Subtitle</p>
 						<h2 class="section-title">Full Width Form</h2>
-						<p class="content-container">Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+						<p class="content-container">
+							Donec sed odio dui. Donec ullamcorper nulla non metus auctor
+							fringilla. Maecenas sed diam eget risus varius blandit sit amet non
+							magna.
+						</p>
 					</div>
 
-					<form id="contact-form">
-						<label>Name</label>
-						<input type="text" id="name">
-						<label>Email</label>
-						<input type="email" id="email">
-						<button>Submit</button>
+					<form id="contact-form" novalidate>
+						<div class="form-field">
+							<label for="name">Name</label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								autocomplete="name"
+								required
+							/>
+							<p class="error-message" id="name-error" hidden>
+								Please enter your name.
+							</p>
+						</div>
+
+						<div class="form-field">
+							<label for="email">Email</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								autocomplete="email"
+								required
+							/>
+							<p class="error-message" id="email-error" hidden>
+								Please enter a valid email address.
+							</p>
+						</div>
+
+						<button type="submit">Submit</button>
 					</form>
 				</div>
 			</section>
 		</main>
 
-		<footer>
-			<p>Copyright 2025 - DynamiX</p>
-			<a href="#" id="back-to-top">Back to Top</a>
+		<footer class="site-footer">
+			<p>©2026 - DynamiX</p>
+			<a href="#top" id="back-to-top" class="back-to-top" hidden>↑</a>
 		</footer>
 	</body>
 </html>
